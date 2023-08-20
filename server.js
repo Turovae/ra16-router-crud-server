@@ -17,8 +17,17 @@ app.use(function (req, res, next) {
   next();
 });
 
-let posts = [];
-let nextId = 1;
+let posts = [
+  {
+    id: 1,
+    content: 'lalala',
+  },
+  {
+    id: 2,
+    content: 'parapapa',
+  }
+];
+let nextId = 3;
 
 app.get("/posts", (req, res) => {
   res.send(JSON.stringify(posts));
