@@ -17,17 +17,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-let posts = [
-  {
-    id: 1,
-    content: 'lalala',
-  },
-  {
-    id: 2,
-    content: 'parapapa',
-  }
-];
-let nextId = 3;
+let posts = [];
+let nextId = 0;
 
 app.get("/posts", (req, res) => {
   res.send(JSON.stringify(posts));
@@ -40,6 +31,7 @@ app.get("/posts/:id", (req, res) => {
 });
 
 app.post("/posts", (req, res) => {
+  console.log(req.body);
   posts.push({ ...req.body, id: nextId++, created: Date.now() });
   res.status(204);
   res.end();
